@@ -510,6 +510,7 @@ section#home .type{
     aspect-ratio: 1 / 0.8;
     padding: 1rem;
     gap: 0.5rem;
+    max-width: 152px;
   }
   .skill-card img{
     max-height: 2rem;
