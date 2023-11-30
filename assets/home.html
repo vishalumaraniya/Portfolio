@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1></h1>
+    <button>Logout</button>
+</body>
+<script>
+    $(window).on('load',function(){
+        let userId = sessionStorage.getItem('userName')
+        let password = sessionStorage.getItem('password')
+        if(userId  && password ){
+                       console.log(window.location.href)
+                       $('h1').html(`welcome home ${userId}`); 
+        }
+        else{
+            window.location.href = 'login.html'
+        }
+    })
+    $(document).on('click','button',function(){
+        sessionStorage.setItem('userName','')
+        sessionStorage.setItem('password','')
+        location.reload();
+    });
+</script>
+</html>

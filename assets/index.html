@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <label for="">User</label>
+        <input type="text" id="user">
+        <label for="">Password</label>
+        <input type="password" id="password">
+        <button class="register">Register</button>
+        <button class="clear">clear</button>
+    </div>
+</body>
+<script>
+    let i = 0;
+    let serialNumber = i;
+    $(document).ready(function(){
+        serialNumber = localStorage.getItem('total');
+        console.log(serialNumber)
+        $(document).on('click','.register',function(){
+            let user = $('#user').val();
+            let password = $('#password').val();  
+            localStorage.setItem(`serialNumber_${serialNumber}`,serialNumber);
+            localStorage.setItem(`userName_${serialNumber}`,user);
+            localStorage.setItem(`password_${serialNumber}`,password);
+            localStorage.setItem(`total`,serialNumber);
+            window.location.href = 'login.html';
+            console.log(serialNumber)
+            serialNumber = serialNumber + 1;
+        })
+        $(document).on('click','.clear',function(){
+            localStorage.clear();
+            serialNumber = 0;
+        });
+    })
+</script>
+</html>

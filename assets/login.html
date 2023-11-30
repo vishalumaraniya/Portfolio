@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <label for="">User</label>
+        <input type="text" id="user">
+        <label for="">Password</label>
+        <input type="password" id="password">
+        <button class="log">login</button>
+        <button class="reg">Register</button>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $(document).on('input','#user',function(){
+            let userId = $('#user').val();
+            sessionStorage.setItem('userName',userId)
+        });
+        $(document).on('input','#password',function(){
+            let password = $('#password').val();
+            sessionStorage.setItem('password',password)
+        });
+        $(document).on('click','.log',function(){
+            const logUserId = sessionStorage.getItem('userName')
+            const logPassword = sessionStorage.getItem('password')
+            const total = localStorage.getItem('total')
+            console.log(total)
+            for(i=0;i<=total;++i){
+                const regUserId = localStorage.getItem(`userName_${i}`)
+                const regPassword = localStorage.getItem(`password_${i}`)
+                console.log(regUserId)
+                console.log(regPassword)
+                if(logUserId === regUserId && logPassword === regPassword){
+                    window.location.href = 'home.html'
+                    console.log('logged in')
+                }
+               
+            }
+        })
+        $(document).on('click','.reg',function(){
+            window.location.href='index.html';
+        })
+    })
+</script>
+</html>
